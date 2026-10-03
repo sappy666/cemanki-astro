@@ -1,0 +1,14 @@
+<header class="header" id="top">
+  <a class="brand" href="#top" aria-label="Cemanki Oil inicio">
+    <span class="brand-mark">◒</span><span>CEMANKI <em>Oil</em></span>
+  </a>
+  <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="#nosotros">Nosotros</a><a href="#productos">Productos</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a>
+  </nav>
+</header>
+<script>
+  const b=document.querySelector('.menu-btn'), n=document.querySelector('.nav');
+  b?.addEventListener('click',()=>{const o=n?.classList.toggle('open');b.setAttribute('aria-expanded',String(!!o))});
+  n?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
+</script>

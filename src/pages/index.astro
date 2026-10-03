@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ProductCard from '../components/ProductCard.astro';
+const products = [
+ {image:'/images/Cemanki-oil-500-ml.webp',size:'500 ml',text:'Extra virgen de alta gama, proveniente del Valle de Romeral, Región del Maule.'},
+ {image:'/images/Cemanki-oil-1-lt.webp',size:'1 litro',text:'Alta calidad, extra virgen, proveniente del Valle de Romeral, Región del Maule.'},
+ {image:'/images/Cemanki-oil-3000-ml.webp',size:'3 litros',text:'Cosecha manual, sabor frutado medio, notas herbales y toques de almendra verde.'},
+ {image:'/images/Cemanki-oil-5000-ml.webp',size:'5 litros',text:'Formato ideal para quienes buscan calidad Cemanki en grandes cantidades.'},
+];
+const steps = [
+ ['/images/arbequina.webp','01','Cosecha manual','Aceitunas seleccionadas a mano para preservar su frescura y calidad.'],
+ ['/images/bg-banner.webp','02','Extracción en frío','Procesado en almazara de tecnología avanzada para cuidar sus cualidades.'],
+ ['/images/Cemanki-oil-5-Lt-1.webp','03','Producción limitada','Un proceso controlado que privilegia la calidad por sobre el volumen.'],
+ ['/images/envasado-especial.webp','04','Envasado protegido','Botellas especiales que ayudan a proteger el aceite de la oxidación.']
+];
+---
+<Layout>
+  <main>
+    <section class="hero">
+      <Header />
+      <div class="hero-bg"></div><div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="kicker">Romeral · Región del Maule · Chile</p>
+        <h1>Aceite de oliva<br/><i>en estado puro.</i></h1>
+        <p class="hero-copy">Extra virgen, cosechado a mano y elaborado en producción limitada. Una tradición nacida entre olivos.</p>
+        <div class="hero-actions"><a class="btn primary" href="#productos">Descubrir productos</a><a class="btn ghost" href="#proceso">Conocer el proceso</a></div>
+      </div>
+      <div class="hero-note"><span>100%</span><small>Natural<br/>sin aditivos</small></div>
+      <a class="scroll" href="#nosotros">Explorar ↓</a>
+    </section>
+
+    <section class="intro section" id="nosotros">
+      <div><p class="eyebrow">Nuestra esencia</p><h2>De la tierra a tu mesa,<br/><i>sin atajos.</i></h2></div>
+      <div class="intro-copy"><p>Cemanki Oil nace en el Valle de Romeral con una idea simple: respetar el fruto, su origen y sus tiempos.</p><p>Nuestro aceite de oliva extra virgen es 100% natural, sin aditivos ni preservantes, con cosecha manual y extracción en frío.</p><div class="facts"><div><b>0,14%</b><span>Acidez referencial</span></div><div><b>1ª</b><span>Extracción en frío</span></div><div><b>Maule</b><span>Origen chileno</span></div></div></div>
+    </section>
+
+    <section class="products section" id="productos">
+      <div class="section-head"><div><p class="eyebrow">Nuestra selección</p><h2>Un formato para<br/><i>cada mesa.</i></h2></div><p>El mismo carácter Cemanki en cuatro presentaciones.</p></div>
+      <div class="product-grid">{products.map(p => <ProductCard {...p} />)}</div>
+    </section>
+
+    <section class="process section" id="proceso">
+      <div class="section-head light"><div><p class="eyebrow">Del olivo a la botella</p><h2>Un proceso que<br/><i>respeta el origen.</i></h2></div><p>Cada etapa está pensada para conservar las cualidades naturales del aceite.</p></div>
+      <div class="steps">{steps.map(([im,n,t,d]) => <article class="step reveal"><img src={im} alt={t} loading="lazy"/><div><span>{n}</span><h3>{t}</h3><p>{d}</p></div></article>)}</div>
+    </section>
+
+    <section class="craft section">
+      <div class="craft-copy"><p class="eyebrow">Producción artesanal</p><h2>Hecho con tiempo.<br/><i>Hecho con propósito.</i></h2><p>Cada botella de <strong>Cemanki Oil</strong> es el resultado de un trabajo comprometido con la excelencia, el respeto por la naturaleza y el orgullo por nuestras raíces.</p><a class="btn dark" href="#contacto">Hablemos</a></div>
+      <div class="craft-image"><img src="/images/arbequina.webp" alt="Aceitunas Cemanki" loading="lazy"/></div>
+    </section>
+
+    <section class="contact section" id="contacto">
+      <div><p class="eyebrow">Contacto</p><h2>¿Quieres Cemanki<br/><i>en tu mesa?</i></h2></div>
+      <div class="contact-grid">
+        <div><span>Teléfono</span><a href="tel:+56998727341">+56 9 9872 7341</a></div>
+        <div><span>Oficina comercial</span><p>Curicó, Región del Maule</p></div>
+        <div><span>Producción y huerto</span><p>Romeral, Región del Maule</p></div>
+        <div><span>Consultas</span><a href="tel:+56998727341">Contáctanos ↗</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="#top"><span>CEMANKI <em>Oil</em></span></a><p>Aceite de oliva extra virgen · Romeral, Chile</p><a href="#top">Volver arriba ↑</a><p class="footer-credit">otro sitio <strong>webfriends</strong></p></footer>
+  <script>
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</Layout>

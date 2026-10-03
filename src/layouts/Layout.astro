@@ -1,0 +1,18 @@
+---
+import '../styles/global.css';
+const { title = 'Cemanki Oil', description = 'Aceite de oliva extra virgen premium, cosechado a mano en Romeral, Región del Maule.' } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#203714" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+</head>
+<body><slot /></body>
+</html>
